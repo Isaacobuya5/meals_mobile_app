@@ -8,9 +8,11 @@ class Categories extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("DeliMeal Categories")
+        title: const Text("DeliMeal Categories",
+        ),
       ),
       body: GridView(
+        padding: EdgeInsets.all(15.0),
         children: DUMMY_CATEGORIES.map((categoryData) => CategoryItem(categoryData.title, categoryData.color))
         .toList(),
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
