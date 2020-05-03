@@ -1,4 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+import './screens/categories.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,7 +13,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Text("Meals App"),
+      home: Categories(),
     );
   }
 }
