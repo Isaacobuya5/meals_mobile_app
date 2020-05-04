@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './meal_categories.dart';
+// import './meal_categories.dart';
 
 class CategoryItem extends StatelessWidget {
   
@@ -10,10 +10,15 @@ class CategoryItem extends StatelessWidget {
   CategoryItem(this.id, this.title, this.color);
    
    void selectedCategory(BuildContext context) {
-     Navigator.of(context).push(MaterialPageRoute(
-       builder: (_) {
-         return MealCategories(id, title);
-       } ));
+    //  Navigator.of(context).push(MaterialPageRoute(
+    //    builder: (_) {
+    //      return MealCategories(id, title);
+    //    } ));
+         Navigator.of(context).pushNamed('/category-meals',
+         arguments: {
+           'id': id,
+           'title': title
+         });
    }
    
   @override
