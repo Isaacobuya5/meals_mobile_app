@@ -17,11 +17,11 @@ class MealCategories extends StatelessWidget {
         appBar: AppBar(
           title: Text(categoryTitle)
         ),
-        body: Center(
-        child: Container(
-           child: Text("Meal categories for this type."),
-        ),
-      ),
+        body: ListView.builder(
+          itemBuilder: (context, index) {
+
+          },
+          itemCount: ,),
     );
   }
 }

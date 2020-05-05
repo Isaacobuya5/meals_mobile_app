@@ -29,8 +29,9 @@ class MyApp extends StatelessWidget {
           )
         )
       ),
-      home: Categories(),
+      // home: Categories(),
       routes: {
+        '/': (context) => Categories(),
         '/category-meals': (context) => MealCategories(),
       },
     );
