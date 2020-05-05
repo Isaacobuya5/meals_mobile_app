@@ -36,15 +36,40 @@ class MealItem extends StatelessWidget {
           children: <Widget> [
             // need to create an image with rounded corners though images don't support rounded corners
             // widget below however helps us to achieve this
-            ClipRRect(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(15.0),
-                topRight: Radius.circular(15.0)
+            Stack(
+              children: <Widget>[
+                ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15.0),
+                    topRight: Radius.circular(15.0)
+                  ),
+                  child: Image.network(imageUrl,
+                  height: 250,
+                  width: double.infinity,
+                  fit: BoxFit.cover),),
+                Positioned(
+                  bottom: 20,
+                  right: 0,
+                  child: Container(
+                    width: 300,
+                    color: Colors.black54,
+                    padding: EdgeInsets.symmetric(
+                      vertical: 5,
+                      horizontal: 20
+                    ),
+                    child: Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 26,
+                      color: Colors.white),
+                      softWrap: true,
+                      overflow: TextOverflow.fade,
               ),
-              child: Image.network(imageUrl,
-              height: 250,
-              width: double.infinity,
-              fit: BoxFit.cover),)
+                  ),
+                )
+              ],
+            ),
+              
           ]
         ),
       ),
