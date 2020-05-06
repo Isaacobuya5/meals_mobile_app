@@ -36,6 +36,18 @@ class MyApp extends StatelessWidget {
         '/category-meals': (context) => MealCategories(),
         MealDetail.routeName: (context) => MealDetail()
       },
+      //onGenerateRoute - useful for providing dynamic navigation
+      // onGenerateRoute: (settings) {
+      //   print(settings.name);
+      //   if (settings.name == '/meal-details') {
+      //     return MaterialPageRoute(builder: (context) => MealDetail());
+      //   }
+      // },
+
+      // onUnknownRoute used to provide a fallback in case a route is not found
+      // onUnknownRoute: (settings) {
+      //   return MaterialPageRoute(builder: (context) => Categories());
+      // },
     );
   }
 }
