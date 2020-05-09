@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import './filters.dart';
 
 class MainDrawer extends StatelessWidget {
 
-  _buildListTile(String title, IconData icon) {
+  _buildListTile(String title, IconData icon, Function tabHandler) {
     return ListTile(
             leading: Icon(icon, size: 26),
             title: Text(title, style: TextStyle(
@@ -10,7 +11,7 @@ class MainDrawer extends StatelessWidget {
               fontSize: 24,
               fontWeight: FontWeight.bold
             ),),
-            onTap: () {},
+            onTap: tabHandler,
           );
   }
 
@@ -32,8 +33,16 @@ class MainDrawer extends StatelessWidget {
               )),
           ),
           SizedBox(height: 20),
-          _buildListTile('Meals', Icons.restaurant),
-          _buildListTile('Filters', Icons.settings)
+          _buildListTile(
+            'Meals', 
+            Icons.restaurant,
+            () => Navigator.of(context).pushNamed('/')
+            ),
+          _buildListTile(
+            'Filters', 
+            Icons.settings,
+            () => Navigator.of(context).pushNamed(Filters.routeName)
+            )
       ],)
     );
   }
