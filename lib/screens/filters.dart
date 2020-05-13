@@ -5,6 +5,12 @@ class Filters extends StatefulWidget {
 
   static const routeName = '/filters';
 
+  final Function _selectFilters;
+
+  final Map<String, bool> _currentFilters;
+
+  Filters(this._currentFilters,this._selectFilters);
+
   @override
   _FiltersState createState() => _FiltersState();
 }
@@ -16,20 +22,45 @@ class _FiltersState extends State<Filters> {
   var _vegan = false;
   var _lactoseFree = false;
 
+  @override
+  initState() {
+    super.initState();
+    _glutenFree = widget._currentFilters['gluten'];
+    _lactoseFree = widget._currentFilters['lactose'];
+    _vegan = widget._currentFilters['vegan'];
+    _vegetarian = widget._currentFilters['vegetarian'];
+  }
+
   Widget _buildSwitchListTile(String title, String description, bool currentValue, Function updateValue) {
     return SwitchListTile(
-                      title: Text(title),
-                      subtitle: Text(description),
-                      value: currentValue,
-                      onChanged: updateValue,);
+          title: Text(title),
+          subtitle: Text(description),
+          value: currentValue,
+          onChanged: updateValue,);
+  
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Filters')
+        title: Text('Filters'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.save), 
+            onPressed: () {
+              final filtersData = {
+    "gluten": _glutenFree,
+    "lactose": _lactoseFree,
+    "vegan": _vegan,
+    "vegetarian": _vegetarian
+  };
+  print(filtersData);
+              widget._selectFilters(filtersData);
+            })
+        ],
       ),
+
       drawer: MainDrawer(),
         body: Column(
           children: <Widget> [
